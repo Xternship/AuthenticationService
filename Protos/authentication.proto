@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "AuthenticationService";
+
+package authentication;
+
+
+service Authentication {
+  rpc Authenticate (AuthenticationRequest) returns (AuthenticationResponse);
+}
+
+message AuthenticationRequest{
+	string UserName = 1;
+	string Password =2;
+}
+
+message AuthenticationResponse{
+	string AccessToken =1;
+	int32 ExpriesIn =2;
+}
+
+
+enum UserRole {
+    ADMIN = 0;
+    INTERN = 2;
+    EVALUATOR = 3;
+    MANAGEMENT = 4;
+}
